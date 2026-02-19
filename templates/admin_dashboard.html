@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="section">
+    <h2>Admin Dashboard</h2>
+    <a href="/add-product" class="btn-primary">Add Product</a>
+    <a href="/logout" class="btn-primary">Logout</a>
+
+    <div class="products">
+        {% for product in products %}
+        <div class="card">
+            <h3>{{ product[1] }}</h3>
+            <p>{{ product[2] }}</p>
+            <a href="/edit-product/{{ product[0] }}">Edit</a> |
+            <a href="/delete-product/{{ product[0] }}">Delete</a>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

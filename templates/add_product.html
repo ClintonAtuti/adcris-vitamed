@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="section">
+    <h2>Add Product</h2>
+    <form method="POST" enctype="multipart/form-data">
+        <input type="text" name="name" placeholder="Product Name" required>
+        <input type="text" name="category" placeholder="Category" required>
+        <textarea name="description" placeholder="Description" required></textarea>
+        <input type="file" name="image">
+        <button type="submit">Add Product</button>
+    </form>
+</section>
+{% endblock %}

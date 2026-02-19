@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="hero">
+    <h2>Reliable Medical & Non-Medical Supplies Across Kenya</h2>
+    <p>Serving Government Hospitals, NGOs, Private Institutions & Community Facilities</p>
+    <a href="/contact" class="btn-primary">Request a Quote</a>
+    <a href="{{ url_for('static', filename='vitamed-profile.pdf') }}" class="btn-primary" download>
+        Download Company Profile
+    </a>
+</section>
+
+<section class="section">
+    <h2>Certifications & Compliance</h2>
+    <div class="products">
+        <div class="card">
+            <h3>Regulatory Compliance</h3>
+            <p>Aligned with Ministry of Health procurement standards.</p>
+        </div>
+        <div class="card">
+            <h3>Quality Assurance</h3>
+            <p>Certified and high-standard medical products.</p>
+        </div>
+        <div class="card">
+            <h3>Ethical Procurement</h3>
+            <p>Transparent and accountable sourcing practices.</p>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <h2>Projects</h2>
+    <div class="products">
+        <div class="card">
+            <h3>Public Hospitals</h3>
+            <p>Supplying essential medical equipment and consumables.</p>
+        </div>
+        <div class="card">
+            <h3>NGO & CDC Programs</h3>
+            <p>Supporting HIV management and PMTCT initiatives.</p>
+        </div>
+        <div class="card">
+            <h3>Private Clinics</h3>
+            <p>Reliable supply partnerships for quality patient care.</p>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AdCris VitaMed</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<header>
+    <div class="logo-container">
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="AdCris VitaMed Logo" class="logo">
+    </div>
+
+
+    <nav>
+        <a href="/">Home</a>
+        <a href="/products">Products</a>
+        <a href="/leadership">Leadership</a>
+        <a href="/contact">Contact Us</a>
+    </nav>
+</header>
+
+
+<div class="main-content"> {% block content %}{% endblock %} </div>
+
+<!-- Partners Section -->
+<section class="partners">
+    <div class="partners-container">
+        <h3>Our Partners & Affiliations</h3>
+
+        <div class="partners-logos">
+            <img src="{{ url_for('static', filename='partners/moh.png') }}" alt="MOH">
+            <img src="{{ url_for('static', filename='partners/cdc.png') }}" alt="CDC">
+            <img src="{{ url_for('static', filename='partners/ngo.png') }}" alt="NGO">
+            <img src="{{ url_for('static', filename='partners/private_hospital.png') }}" alt="Private Hospital">
+        </div>
+    </div>
+</section>
+
+
+<footer class="footer">
+    <div class="footer-container">
+
+        <!-- Company Info -->
+        <div class="footer-column">
+            <h3>AdCris VitaMed</h3>
+            <p>
+                Reliable provider of high-quality medical and non-medical supplies
+                serving healthcare institutions across Kenya.
+            </p>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-column">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/products">Products</a></li>
+                <li><a href="/leadership">Leadership</a></li>
+                <li><a href="/contact">Request Quote</a></li>
+                <li>
+                    <a href="{{ url_for('static', filename='vitamed_profile.pdf') }}" download>
+                        Download Profile
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="footer-column">
+            <h4>Contact Us</h4>
+            <p><strong>Location:</strong> Madaraka, Nairobi</p>
+            <p><strong>Phone:</strong> +254 722 528 554</p>
+            <p><strong>Phone:</strong> +254 797 303 575</p>
+            <p><strong>Email:</strong> info@adcrisvitamed.co.ke</p>
+        </div>
+
+        <!-- Social Media -->
+        <div class="footer-column">
+            <h4>Connect With Us</h4>
+            <p>
+                <a href="#">LinkedIn</a><br>
+                <a href="#">Facebook</a><br>
+                <a href="#">Twitter</a>
+            </p>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <p>© 2026 AdCris VitaMed. All Rights Reserved.</p>
+    </div>
+</footer>
+
+
+</body>
+</html>
