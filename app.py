@@ -108,11 +108,52 @@ def dashboard():
     if 'admin' not in session:
         return redirect(url_for('admin_login'))
 
+    search = request.args.get('search', '')
+    category = request.args.get('category', '')
+    page = int(request.args.get('page', 1))
+    per_page = 5
+    offset = (page - 1) * per_page
+
     conn = get_db_connection()
-    products = conn.execute("SELECT * FROM products").fetchall()
+
+    query = "SELECT * FROM products WHERE 1=1"
+    params = []
+
+    if search:
+        query += " AND name LIKE ?"
+        params.append(f"%{search}%")
+
+    if category:
+        query += " AND category = ?"
+        params.append(category)
+
+    # Count total products
+    count_query = query.replace("SELECT *", "SELECT COUNT(*)")
+    total = conn.execute(count_query, params).fetchone()[0]
+
+    # Pagination
+    query += " LIMIT ? OFFSET ?"
+    params.extend([per_page, offset])
+
+    products = conn.execute(query, params).fetchall()
+
+    # Get distinct categories
+    categories = conn.execute("SELECT DISTINCT category FROM products").fetchall()
+
     conn.close()
 
-    return render_template('admin_dashboard.html', products=products)
+    total_pages = (total + per_page - 1) // per_page
+
+    return render_template(
+        'admin_dashboard.html',
+        products=products,
+        search=search,
+        category=category,
+        categories=categories,
+        total=total,
+        page=page,
+        total_pages=total_pages
+    )
 
 
 @app.route('/add-product', methods=['GET', 'POST'])
