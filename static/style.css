@@ -300,3 +300,26 @@ footer {
         background-attachment: scroll;
     }
 }
+.partners {
+    padding: 60px 20px;
+    background: #f4f8fb;
+    text-align: center;
+}
+
+.partners h3 {
+    font-size: 28px;
+    margin-bottom: 30px;
+    color: #1e3a5f;
+}
+.partners h3 {
+    font-size: 28px;
+    margin-bottom: 40px;
+    color: #1e3a5f;
+}
+
+.partners-banner img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
