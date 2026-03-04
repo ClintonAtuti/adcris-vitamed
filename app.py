@@ -57,9 +57,34 @@ def home():
 @app.route('/products')
 def products():
     conn = get_db_connection()
-    products = conn.execute("SELECT * FROM products").fetchall()
+
+    category = request.args.get('category')
+    search = request.args.get('search')
+
+    query = "SELECT * FROM products WHERE 1=1"
+    params = []
+
+    if category:
+        query += " AND category = ?"
+        params.append(category)
+
+    if search:
+        query += " AND name LIKE ?"
+        params.append(f"%{search}%")
+
+    products = conn.execute(query, params).fetchall()
+
+    categories = conn.execute("SELECT DISTINCT category FROM products").fetchall()
+
     conn.close()
-    return render_template('products.html', products=products)
+
+    return render_template(
+        'products.html',
+        products=products,
+        categories=categories,
+        selected_category=category,
+        search_query=search
+    )
 
 
 @app.route('/contact', methods=['GET', 'POST'])
@@ -221,7 +246,6 @@ def delete_product(id):
     conn.execute("DELETE FROM products WHERE id=?", (id,))
     conn.commit()
     conn.close()
-
     return redirect(url_for('dashboard'))
 
 

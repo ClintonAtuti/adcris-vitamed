@@ -3,6 +3,7 @@
 <head>
     <title>AdCris VitaMed</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 
@@ -11,13 +12,17 @@
         <img src="{{ url_for('static', filename='logo.png') }}" alt="AdCris VitaMed Logo" class="logo">
     </div>
 
+    <nav class="navbar">
 
-    <nav>
-        <a href="/">Home</a>
-        <a href="/products">Products</a>
-        <a href="/leadership">Leadership</a>
-        <a href="/contact">Contact Us</a>
-    </nav>
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="/">Home</a></li>
+            <li><a href="/products">Products</a></li>
+            <li><a href="/leadership">Leadership</a></li>
+            <li><a href="/contact">Contact</a></li>
+        </ul>
+</nav>
 </header>
 
 
@@ -90,6 +95,10 @@
     </div>
 </footer>
 
-
+    <script>
+    function toggleMenu() {
+        document.getElementById("navLinks").classList.toggle("active");
+    }
+    </script>
 </body>
 </html>
